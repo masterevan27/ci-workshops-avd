@@ -4,12 +4,15 @@ repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v6.0.0
     hooks:
+      # Removes trailing whitespaces from lines:
       - id: trailing-whitespace
         files: labs/L2LS/sites/site_1/group_vars/|labs/L2LS/sites/site_2/group_vars/
 
+      # removes empty lines from end of files:
       - id: end-of-file-fixer
         exclude_types: [svg, json]
         files: labs/L2LS/sites/site_1/group_vars/|labs/L2LS/sites/site_2/group_vars/
 
+      # checks for proper YAML indentation and formatting
       - id: check-yaml
         files: labs/L2LS/sites/site_1/group_vars/|labs/L2LS/sites/site_2/group_vars/
