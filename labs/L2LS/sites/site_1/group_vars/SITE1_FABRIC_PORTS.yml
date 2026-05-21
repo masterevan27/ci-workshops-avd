@@ -9,11 +9,6 @@ port_profiles:
     mode: "access"
     vlans: "20"
     spanning_tree_portfast: edge
-  - profile: PP-VLAN3000
-    mode: "access"
-    vlans: "3000"
-    spanning_tree_portfast: edge
-    
 
 ###########################################################
 # ---------------- Endpoint Connectivity ---------------- #

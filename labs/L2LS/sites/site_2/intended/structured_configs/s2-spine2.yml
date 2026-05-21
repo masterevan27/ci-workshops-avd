@@ -72,6 +72,30 @@ ethernet_interfaces:
   peer: s2-leaf4
   peer_interface: Ethernet3
   peer_type: l2leaf
+- name: Ethernet7
+  description: P2P_WANCORE_Ethernet2
+  shutdown: false
+  mtu: 1500
+  ip_address: 10.0.0.39/31
+  ospf_network_point_to_point: true
+  ospf_area: 0.0.0.0
+  peer: WANCORE
+  peer_interface: Ethernet2
+  peer_type: other
+  switchport:
+    enabled: false
+- name: Ethernet8
+  description: P2P_WANCORE_Ethernet2
+  shutdown: false
+  mtu: 1500
+  ip_address: 10.0.0.43/31
+  ospf_network_point_to_point: true
+  ospf_area: 0.0.0.0
+  peer: WANCORE
+  peer_interface: Ethernet2
+  peer_type: other
+  switchport:
+    enabled: false
 hostname: s2-spine2
 ip_domain_lookup:
   source_interfaces:
@@ -87,9 +111,7 @@ local_users:
 - name: arista
   privilege: 15
   role: network-admin
-  sha512_password: $6$arista$WXPFesT1C3kY2O2q2u7MuyTk17LSMvd7oDrMLISdvz.3YLlyCJJRThbMfR4fI2DlmKKSjHlAkVvazmpTX6qEt.
-  ssh_key: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDGToOGcAEP1CjpONaRMU8iRXZkRm+pOZA9Cmq5MKk2THUii+w4ThKmXcWWZ9gYckB6LeQbtQEkpEW1sSf4e585mwk62V7a9tmu8UjpnH9OKmFCVyl6DkP+WQIldgy8kUoYBing3U6EAN1t7sLf18mZVybgPf7WQby3loumhXFXA+KV+xef51+UNPsxN507bRMrqBiUX1X76R1CdFerU0dMytrF7eQjcYMPxmRPoGytXIXbg18Z7fRJhWttqIaG1NpFy5M6dG9g99UeqQ4D+Y9V4GrTHBY5JotS7ClvonuzxsjAaBjfochXIxDk3t2yY88KDH7r83FM45qQKNtvFVmT
-    arista@buffalo-day2-15-0a0fe3d8-eos
+  sha512_password: $6$arista$I9s1.GugExXfjBJdJkUJBQR94jjynIII6oY8fTGu1lwijpTClYqTCSNZP9F4R2d1letYrbbjWEwZQCLFWbWgz.
 loopback_interfaces:
 - name: Loopback0
   description: ROUTER_ID
@@ -164,6 +186,8 @@ router_ospf:
     bfd_enable: false
     no_passive_interfaces:
     - Vlan4093
+    - Ethernet7
+    - Ethernet8
     max_lsa: 12000
     redistribute:
       connected:
